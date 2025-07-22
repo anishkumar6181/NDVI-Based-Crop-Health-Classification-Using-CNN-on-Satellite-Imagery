@@ -5,6 +5,13 @@ import cv2              # OpenCV for image resizing
 from tqdm import tqdm   # Progress bar
 import shutil           # File operations
 
+# path setup
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(SCRIPT_DIR)
+INPUT_DIR = os.path.join(BASE_DIR, 'data', 'raw', 'train')
+OUTPUT_DIR = os.path.join(BASE_DIR, 'data', 'processed')
+
+
 class HyperspectralImageProcessor:
     def __init__(self, input_dir, output_dir, img_size):
         # configuration settings
@@ -128,12 +135,11 @@ class HyperspectralImageProcessor:
 
 
 # Run the main processing function if this script is executed directly
-input_dir = 'data/raw/train'
-output_dir = 'data/processed'
-img_size = 64
-image_processor = HyperspectralImageProcessor(input_dir, output_dir, img_size)
 def processAllImages():
+    # Using the absolute paths we defined earlier
+    image_processor = HyperspectralImageProcessor(INPUT_DIR, OUTPUT_DIR, 64)
     image_processor.processAllImages()
+    
 if __name__ == "__main__":
     processAllImages()
 else:
