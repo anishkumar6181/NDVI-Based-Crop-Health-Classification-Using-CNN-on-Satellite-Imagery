@@ -1,4 +1,14 @@
+# For preprocessing and data handling
+numpy
 tifffile
 opencv-python
 tqdm
-numpy
+pandas
+
+# For machine learning and evaluation
+tensorflow
+scikit-learn
+
+# For plotting and visualization
+matplotlib
+seaborn
