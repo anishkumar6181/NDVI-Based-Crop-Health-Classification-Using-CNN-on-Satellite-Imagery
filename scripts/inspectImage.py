@@ -1,11 +1,18 @@
+import os
 import tifffile
-filePathTiff = 'data/beyond-visible-spectrum-ai-for-agriculture-2024/train/Health/hyper (1).tif'
+import numpy as np
+
+# Determine base directory (two levels up from this file's directory)
+base_dir = os.path.dirname(os.path.dirname(__file__))
+
+# File paths
+filePathTiff = os.path.join(base_dir, r'data\raw\train\Health\hyper (1).tif')
+filePathNpy = os.path.join(base_dir, r'data\processed\Health\hyper (1).npy')
+
+# Read and inspect TIFF image
 img = tifffile.imread(filePathTiff)
 print('Tiff Image shape:', img.shape) # output - (64,64,125)
 
-
-import numpy as np
-filePathNpy = 'data/processed/Health/hyper (1).npy'
 # Load the array and check its shape - should be (64, 64) for NDVI
 data = np.load(filePathNpy)
 print(f"Array shape: {data.shape}")  # Dimensions (e.g., (64, 64) for NDVI)
